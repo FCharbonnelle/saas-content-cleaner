@@ -23,10 +23,10 @@ export default function StatsOverview() {
     <section className="py-16 border-y border-white border-opacity-10">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
-          <StatItem icon="🚀" label="Active Users" value="50K+" />
-          <StatItem icon="📝" label="Characters Cleaned" value="2.5B+" />
-          <StatItem icon="⏱️" label="Avg Response Time" value="&lt;100ms" />
-          <StatItem icon="⭐" label="User Satisfaction" value="4.9/5" />
+          <StatItem icon="🚀" label="Utilisateurs actifs" value="50K+" />
+          <StatItem icon="📝" label="Caractères nettoyés" value="2.5B+" />
+          <StatItem icon="⏱️" label="Temps de réponse" value="<100ms" />
+          <StatItem icon="⭐" label="Satisfaction client" value="4.9/5" />
         </div>
       </div>
     </section>

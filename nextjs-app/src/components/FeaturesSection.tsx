@@ -20,33 +20,33 @@ export default function FeaturesSection() {
   const features = [
     {
       icon: '⚡',
-      title: 'Lightning Fast',
-      description: 'Process thousands of characters per second with optimized algorithms.',
+      title: 'Ultra rapide',
+      description: 'Traitez des milliers de caractères par seconde avec des algorithmes optimisés.',
     },
     {
       icon: '🔒',
-      title: 'Secure & Private',
-      description: 'All content stays on your device. No data sent to servers.',
+      title: 'Sécurisé & Privé',
+      description: 'Tout le contenu reste sur votre appareil. Aucune donnée envoyée aux serveurs.',
     },
     {
       icon: '🎯',
-      title: 'Precise Control',
-      description: 'Fine-tune every aspect of content cleaning with custom options.',
+      title: 'Contrôle précis',
+      description: 'Ajustez finement chaque aspect du nettoyage avec des options personnalisées.',
     },
     {
       icon: '📊',
-      title: 'Detailed Analytics',
-      description: 'Track statistics and analyze cleaning performance over time.',
+      title: 'Analyses détaillées',
+      description: 'Suivez les statistiques et analysez les performances au fil du temps.',
     },
     {
       icon: '🔄',
-      title: 'Batch Processing',
-      description: 'Clean multiple files at once with consistent settings.',
+      title: 'Traitement par lot',
+      description: 'Nettoyez plusieurs fichiers à la fois avec des paramètres cohérents.',
     },
     {
       icon: '📤',
-      title: 'Easy Export',
-      description: 'Export results in multiple formats: CSV, JSON, TXT.',
+      title: 'Export facile',
+      description: 'Exportez les résultats en plusieurs formats : CSV, JSON, TXT.',
     },
   ];
 
@@ -55,10 +55,10 @@ export default function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 mb-4">
-            Powerful Features
+            Fonctionnalités puissantes
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Everything you need for professional content cleaning and management.
+            Tout ce dont vous avez besoin pour nettoyer et gérer du contenu de manière professionnelle.
           </p>
         </div>
 

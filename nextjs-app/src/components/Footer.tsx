@@ -15,46 +15,46 @@ export default function Footer() {
               </div>
               <span className="font-bold text-white">ContentFlow</span>
             </div>
-            <p className="text-sm text-gray-400">Professional content cleaning for modern teams.</p>
+            <p className="text-sm text-gray-400">Nettoyage professionnel du contenu pour les équipes modernes.</p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="font-semibold text-white mb-4">Product</h4>
+            <h4 className="font-semibold text-white mb-4">Produit</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Security</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Fonctionnalités</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Tarifs</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Sécurité</a></li>
               <li><a href="#" className="hover:text-purple-400 transition-colors">API</a></li>
             </ul>
           </div>
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-white mb-4">Company</h4>
+            <h4 className="font-semibold text-white mb-4">Entreprise</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-purple-400 transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">À propos</a></li>
               <li><a href="#" className="hover:text-purple-400 transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Emplois</a></li>
               <li><a href="#" className="hover:text-purple-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="font-semibold text-white mb-4">Legal</h4>
+            <h4 className="font-semibold text-white mb-4">Légal</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Privacy</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Terms</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">GDPR</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Confidentialité</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Conditions</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">Politique cookies</a></li>
+              <li><a href="#" className="hover:text-purple-400 transition-colors">RGPD</a></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white border-opacity-10 pt-8 flex justify-between items-center">
           <p className="text-sm text-gray-400">
-            © {currentYear} ContentFlow. All rights reserved.
+            © {currentYear} ContentFlow. Tous droits réservés.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">Twitter</a>

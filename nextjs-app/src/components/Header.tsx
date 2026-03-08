@@ -13,24 +13,24 @@ export default function Header() {
             <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
               ContentFlow
             </h1>
-            <p className="text-xs text-gray-400">Pro Content Cleaner</p>
+            <p className="text-xs text-gray-400">Nettoyeur de contenu pro</p>
           </div>
         </div>
 
         {/* Center Navigation */}
         <nav className="hidden md:flex gap-8 text-sm text-gray-300">
-          <a href="#" className="hover:text-purple-400 transition-colors">Features</a>
-          <a href="#" className="hover:text-purple-400 transition-colors">Docs</a>
-          <a href="#" className="hover:text-purple-400 transition-colors">Pricing</a>
+          <a href="#" className="hover:text-purple-400 transition-colors">Fonctionnalités</a>
+          <a href="#" className="hover:text-purple-400 transition-colors">Documentation</a>
+          <a href="#" className="hover:text-purple-400 transition-colors">Tarifs</a>
         </nav>
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
           <button className="px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors">
-            Sign In
+            Se connecter
           </button>
           <button className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all">
-            Get Started
+            Commencer
           </button>
         </div>
       </div>

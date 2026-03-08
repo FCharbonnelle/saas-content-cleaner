@@ -13,17 +13,17 @@ import FeaturesSection from './FeaturesSection';
 import StatsOverview from './StatsOverview';
 
 const SAMPLE_TEXTS = [
-  'Welcome to   our SaaS   platform.  We provide amazing tools!',
-  '<p>This is HTML <b>content</b> with   extra   spaces</p>',
-  'Check this link: https://example.com   and   contact   us!!!',
-  'Text with special chars: @#$%^&*()   and   numbers   123456',
+  'Bienvenue sur   notre plateforme   SaaS.  Nous fournissons des outils incroyables!',
+  '<p>Ceci est du contenu HTML <b>avec</b> des   espaces   supplémentaires</p>',
+  'Consultez ce lien: https://example.com   et   contactez-nous!!!',
+  'Texte avec caractères spéciaux: @#$%^&*()   et   nombres   123456',
 ];
 
 export default function ContentCleanerDemo() {
   const [input, setInput] = useState('');
   const [cleanedContent, setCleanedContent] = useState('');
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [stats, setStats] = useState<any>(null);
+  const [stats, setStats] = useState<ReturnType<typeof ContentCleaner.getStats> | null>(null);
   const [showPresets, setShowPresets] = useState(false);
   const [activeTab, setActiveTab] = useState<'options' | 'history'>('options');
   const [showToast, setShowToast] = useState(false);
@@ -69,7 +69,7 @@ export default function ContentCleanerDemo() {
       };
 
       setHistory((prev) => [historyItem, ...prev.slice(0, 9)]);
-      showNotification('✓ Content cleaned successfully!', 'success');
+      showNotification('✓ Contenu nettoyé avec succès!', 'success');
     }
   };
 
@@ -84,12 +84,12 @@ export default function ContentCleanerDemo() {
   const handleLoadFromHistory = (item: HistoryItem) => {
     setCleanedContent(item.cleaned);
     setStats(ContentCleaner.getStats(item.original, item.cleaned));
-    showNotification('✓ Loaded from history!', 'success');
+    showNotification('✓ Chargé depuis l\'historique!', 'success');
   };
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
-    showNotification('✓ Copied to clipboard!', 'success');
+    showNotification('✓ Copié dans le presse-papiers!', 'success');
   };
 
   const handleClear = () => {
@@ -100,11 +100,11 @@ export default function ContentCleanerDemo() {
 
   const handleExportCsv = () => {
     if (history.length === 0) {
-      showNotification('No history to export', 'error');
+      showNotification('Pas d\'historique à exporter', 'error');
       return;
     }
 
-    let csv = 'Original,Cleaned,Characters Removed,Date\n';
+    let csv = 'Original,Nettoyé,Caractères supprimés,Date\n';
     history.forEach((item) => {
       const date = new Date(item.timestamp).toLocaleString();
       const charRemoved = item.original.length - item.cleaned.length;
@@ -118,9 +118,9 @@ export default function ContentCleanerDemo() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'content-cleaner-history.csv';
+    a.download = 'historique-nettoyeur-contenu.csv';
     a.click();
-    showNotification('✓ Exported as CSV!', 'success');
+    showNotification('✓ Exporté en CSV!', 'success');
   };
 
   const handlePreset = (preset: string) => {
@@ -138,7 +138,7 @@ export default function ContentCleanerDemo() {
           toUpperCase: false,
           removeNumbers: false,
         });
-        showNotification('Applied: Aggressive preset', 'info');
+        showNotification('Appliqué: Préréglage Agressif', 'info');
         break;
       case 'minimal':
         setOptions({
@@ -153,7 +153,7 @@ export default function ContentCleanerDemo() {
           toUpperCase: false,
           removeNumbers: false,
         });
-        showNotification('Applied: Minimal preset', 'info');
+        showNotification('Appliqué: Préréglage Minimal', 'info');
         break;
       case 'html':
         setOptions({
@@ -168,7 +168,7 @@ export default function ContentCleanerDemo() {
           toUpperCase: false,
           removeNumbers: false,
         });
-        showNotification('Applied: HTML preset', 'info');
+        showNotification('Appliqué: Préréglage HTML', 'info');
         break;
     }
     setShowPresets(false);
@@ -193,14 +193,14 @@ export default function ContentCleanerDemo() {
           <div className="text-center mb-12 animate-fade-in">
             <div className="mb-4 inline-block">
               <span className="px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-sm font-semibold">
-                ✨ Professional Content Cleaning
+                ✨ Nettoyage professionnel du contenu
               </span>
             </div>
             <h1 className="text-6xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 mb-4 leading-tight">
               ContentFlow
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Enterprise-grade content cleaning with advanced analytics and batch processing capabilities
+              Nettoyage de contenu de qualité entreprise avec analyses avancées et capacités de traitement par lot
             </p>
           </div>
 
@@ -216,8 +216,8 @@ export default function ContentCleanerDemo() {
                       <div className="flex items-center gap-3">
                         <div className="text-4xl">📝</div>
                         <div>
-                          <h2 className="text-2xl font-bold text-white">Your Content</h2>
-                          <p className="text-xs text-cyan-400">Add your raw content</p>
+                          <h2 className="text-2xl font-bold text-white">Votre contenu</h2>
+                          <p className="text-xs text-cyan-400">Ajoutez votre contenu brut</p>
                         </div>
                       </div>
                       {input.length > 0 && (
@@ -229,7 +229,7 @@ export default function ContentCleanerDemo() {
 
                     {/* Sample Buttons */}
                     <div className="mb-6">
-                      <p className="text-xs font-semibold text-gray-400 mb-3">⚡ Try Examples:</p>
+                      <p className="text-xs font-semibold text-gray-400 mb-3">⚡ Essayez des exemples:</p>
                       <div className="grid grid-cols-2 gap-2">
                         {SAMPLE_TEXTS.map((text, idx) => (
                           <button
@@ -255,7 +255,7 @@ export default function ContentCleanerDemo() {
                     <textarea
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
-                      placeholder="Paste your content here... We'll work our magic! 🎯"
+                      placeholder="Collez votre contenu ici... Nous ferons la magie! 🎯"
                       className="w-full h-48 p-4 bg-slate-800 bg-opacity-50 border-2 border-cyan-500 border-opacity-30 rounded-2xl focus:border-cyan-400 focus:outline-none resize-none text-white placeholder-gray-500 text-sm backdrop-blur-sm transition-all duration-300 hover:border-opacity-50"
                     />
 
@@ -267,7 +267,7 @@ export default function ContentCleanerDemo() {
                         className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600"
                         icon="✨"
                       >
-                        Clean Content
+                        Nettoyer le contenu
                       </Button>
                       <Button
                         variant="secondary"
@@ -275,7 +275,7 @@ export default function ContentCleanerDemo() {
                         onClick={handleClear}
                         icon="🗑️"
                       >
-                        Reset
+                        Réinitialiser
                       </Button>
                     </div>
                   </div>
@@ -290,8 +290,8 @@ export default function ContentCleanerDemo() {
                       <div className="flex items-center gap-3">
                         <div className="text-4xl">✨</div>
                         <div>
-                          <h2 className="text-2xl font-bold text-white">Cleaned Result</h2>
-                          <p className="text-xs text-green-400">Ready to copy</p>
+                          <h2 className="text-2xl font-bold text-white">Résultat nettoyé</h2>
+                          <p className="text-xs text-green-400">Prêt à copier</p>
                         </div>
                       </div>
                       {cleanedContent.length > 0 && (
@@ -315,13 +315,13 @@ export default function ContentCleanerDemo() {
                           className="w-full bg-gradient-to-r from-green-500 to-emerald-600"
                           icon="📋"
                         >
-                          Copy to Clipboard
+                          Copier dans le presse-papiers
                         </Button>
                       </>
                     ) : (
                       <div className="flex flex-col items-center justify-center flex-1">
                         <div className="text-6xl mb-3 animate-pulse">🔮</div>
-                        <p className="text-gray-400 text-center">Clean your content to see the magic!</p>
+                        <p className="text-gray-400 text-center">Nettoyez votre contenu pour voir la magie!</p>
                       </div>
                     )}
                   </div>
@@ -334,11 +334,11 @@ export default function ContentCleanerDemo() {
               <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-0.5 rounded-3xl mb-8">
                 <div className="bg-slate-900 rounded-3xl p-8 backdrop-blur-xl border border-white border-opacity-5">
                   <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                    <span>📊</span> Cleaning Statistics
+                    <span>📊</span> Statistiques de nettoyage
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <StatsCard
-                      label="Characters Removed"
+                      label="Caractères supprimés"
                       value={stats.charRemoved}
                       icon="✂️"
                       bgColor="bg-cyan-500 bg-opacity-10"
@@ -346,7 +346,7 @@ export default function ContentCleanerDemo() {
                       textColor="text-cyan-300"
                     />
                     <StatsCard
-                      label="Reduction %"
+                      label="Réduction %"
                       value={`${stats.percentReduced}%`}
                       icon="📉"
                       bgColor="bg-purple-500 bg-opacity-10"
@@ -354,7 +354,7 @@ export default function ContentCleanerDemo() {
                       textColor="text-purple-300"
                     />
                     <StatsCard
-                      label="Words Before"
+                      label="Mots avant"
                       value={stats.wordsBefore}
                       icon="📄"
                       bgColor="bg-orange-500 bg-opacity-10"
@@ -362,7 +362,7 @@ export default function ContentCleanerDemo() {
                       textColor="text-orange-300"
                     />
                     <StatsCard
-                      label="Words After"
+                      label="Mots après"
                       value={stats.wordsAfter}
                       icon="✓"
                       bgColor="bg-green-500 bg-opacity-10"
@@ -386,8 +386,8 @@ export default function ContentCleanerDemo() {
               <div className="bg-slate-900 rounded-3xl p-8 backdrop-blur-xl border border-white border-opacity-5 overflow-hidden">
                 <Tabs
                   tabs={[
-                    { id: 'options', label: '⚙️ Cleaning Options' },
-                    { id: 'history', label: '📜 History', count: history.length },
+                    { id: 'options', label: '⚙️ Options de nettoyage' },
+                    { id: 'history', label: '📜 Historique', count: history.length },
                   ]}
                   activeTab={activeTab}
                   onTabChange={handleTabChange}
@@ -399,12 +399,12 @@ export default function ContentCleanerDemo() {
                       {/* Presets Card */}
                       <div className="mb-8 p-6 bg-gradient-to-br from-cyan-600 to-blue-600 bg-opacity-20 rounded-2xl border-2 border-cyan-500 border-opacity-50">
                         <div className="flex justify-between items-center mb-4">
-                          <h3 className="font-bold text-white text-lg">🎯 Preset Configurations</h3>
+                          <h3 className="font-bold text-white text-lg">🎯 Configurations prédéfinies</h3>
                           <button
                             onClick={() => setShowPresets(!showPresets)}
                             className="text-sm px-3 py-1 bg-cyan-600 bg-opacity-40 text-cyan-300 rounded-lg hover:bg-opacity-60 transition-all duration-300 border border-cyan-400 border-opacity-50"
                           >
-                            {showPresets ? 'Hide' : 'Show'}
+                            {showPresets ? 'Masquer' : 'Afficher'}
                           </button>
                         </div>
                         {showPresets && (
@@ -425,14 +425,14 @@ export default function ContentCleanerDemo() {
                               onClick={() => handlePreset('aggressive')}
                               className="p-4 bg-red-600 bg-opacity-30 border-2 border-red-400 rounded-xl hover:bg-opacity-50 transition-all duration-300 text-white font-semibold hover:shadow-lg hover:shadow-red-500/50"
                             >
-                              ⚡ Aggressive
+                              ⚡ Agressif
                             </button>
                           </div>
                         )}
                       </div>
 
                       {/* Options Grid */}
-                      <p className="text-sm font-semibold text-gray-300 mb-4">🔧 Advanced Options</p>
+                      <p className="text-sm font-semibold text-gray-300 mb-4">🔧 Options avancées</p>
                       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                         {Object.entries(options).map(([key, value], idx) => {
                           const colors = [
@@ -479,7 +479,7 @@ export default function ContentCleanerDemo() {
                             className="mb-6 w-full bg-gradient-to-r from-green-500 to-emerald-600"
                             icon="📥"
                           >
-                            Export History as CSV
+                            Exporter l'historique en CSV
                           </Button>
                           <div className="space-y-3 max-h-96 overflow-y-auto pr-4">
                             {history.map((item, idx) => {
@@ -506,7 +506,7 @@ export default function ContentCleanerDemo() {
                                         {item.original.substring(0, 60)}...
                                       </p>
                                       <p className="text-xs text-gray-400 mt-2">
-                                        ✂️ {charRemoved} chars removed • 📄 {item.cleaned.length} result
+                                        ✂️ {charRemoved} caractères supprimés • 📄 {item.cleaned.length} résultat
                                       </p>
                                     </div>
                                     <Button
@@ -515,7 +515,7 @@ export default function ContentCleanerDemo() {
                                       onClick={() => handleLoadFromHistory(item)}
                                       icon="📂"
                                     >
-                                      Load
+                                      Charger
                                     </Button>
                                   </div>
                                 </div>
@@ -526,8 +526,8 @@ export default function ContentCleanerDemo() {
                       ) : (
                         <div className="flex flex-col items-center justify-center py-16 text-center">
                           <div className="text-5xl mb-4">📭</div>
-                          <p className="text-gray-400 text-lg">No history yet!</p>
-                          <p className="text-gray-500 text-sm mt-2">Your cleaning sessions will appear here</p>
+                          <p className="text-gray-400 text-lg">Pas d'historique encore!</p>
+                          <p className="text-gray-500 text-sm mt-2">Vos sessions de nettoyage apparaîtront ici</p>
                         </div>
                       )}
                     </div>
